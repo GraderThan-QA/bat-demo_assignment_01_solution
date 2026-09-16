@@ -1,0 +1,18 @@
+The biggest idea that clicked this assignment was separating a *module* from its
+*interfaces*. Putting the math in bill.py as pure functions — no input() or print(),
+just arguments in and a value out — made them trivial to unit test: each test is
+just `assert grand_total(50, 20) == 60.0`. Once the functions were right, the
+console, notebook, and Streamlit versions were all thin shells that import bill and
+call the same four functions, so I wasn't rewriting the logic three times.
+
+The part I struggled with was rounding money. I first wrote split_evenly without
+round(), and 100 / 3 gave 33.333333, which isn't a real amount of cents. Adding
+round(total / people, 2) fixed it. Writing the ValueError for people <= 0 also
+taught me the difference between a bug and a *guard* — the test that uses
+pytest.raises actually expects the exception, which felt backwards until I got it.
+
+What I want more practice with is the integration tests. I understand the unit
+tests, but the Streamlit AppTest and running the notebook headless are still a bit
+of a black box — my next step is to read how AppTest sets a widget value and
+re-runs the script, so I could write one of those from scratch instead of just
+reading it.
