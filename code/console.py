@@ -14,7 +14,7 @@ people = int(input("Number of people: "))
 
 tip = tip_amount(subtotal, pct)
 total = grand_total(subtotal, pct)
-per_person = split_evenly(total, people)
+per_person = split_evenly(subtotal, people)
 
 print(f"Tip ({pct:.0f}%): ${tip:.2f}")
 print(f"Grand total: ${total:.2f}")
